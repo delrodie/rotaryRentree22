@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Participation{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <h1>Formulaire de participation</h1>
+            <div class="row d-block d-md-none">
+                <div class="col" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="3000">
+                    <img src="{{ absolute_url(asset('build/images/illustration.jpeg')) }}" alt="" class="img-fluid">
+                </div>
+            </div>
+            {{ include('participation/_form.html.twig') }}
+
+        </div>
+        <div class="col-md-5 d-none d-md-block" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="3000">
+            <img src="{{ absolute_url(asset('build/images/illustration.jpeg')) }}" alt="" class="img-fluid">
+        </div>
+    </div>
+{% endblock %}
+
+
+

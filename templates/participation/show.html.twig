@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reçu N°{{ participation.reference }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="row">
+                <div class="col-md-6" data-aos="zoom-out-right" data-aos-easing="linear" data-aos-duration="3000">
+                    <img src="{{ absolute_url(asset('build/images/illustration.jpeg')) }}" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-6" data-aos="flip-right" data-aos-easing="linear" data-aos-duration="3000">
+                    <h1>RECU</h1>
+                    <div class="row d-md-block d-lg-none" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="3000">
+                        <div class="col-12"><label for="">Reference: </label>&nbsp;<b>{{ participation.reference }}</b></div>
+                        <div class="col-12"><label for="">Nom & Prenoms :</label>&nbsp; <b>{{ participation.nom }} {{ participation.prenoms }}</b></div>
+                        <div class="col-12"><label for="">Email : </label> &nbsp; <b>{{ participation.email }}</b></div>
+                        <div class="col-12"><label for="">Contact : </label> &nbsp; <b>{{ participation.contact }}</b></div>
+                        <div class="col-12"><label for="">Club : </label> &nbsp; <b>{{ participation.club }}</b></div>
+                        <div class="col-12"><label for="">Nombre de places : </label> &nbsp; <b>{{ participation.nombrePlace }}</b></div>
+                        <div class="col-12"><label for="">Montant : </label> &nbsp; <b>{{ participation.montant|number_format(0,'','.') }} FCFA</b></div>
+                    </div>
+                    <div class="row d-none d-lg-block" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="3000">
+                        <div class="col-12">
+                            <div class="row mt-3">
+                                <div class="col-5"><label for="">Reference : </label></div>
+                                <div class="col-7"><b>{{ participation.reference }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Nom & Prenoms :</label></div>
+                                <div class="col-7"><b>{{ participation.nom }} {{ participation.prenoms }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Email : </label></div>
+                                <div class="col-7"><b>{{ participation.email }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Contact : </label></div>
+                                <div class="col-7"><b>{{ participation.contact }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Club : </label></div>
+                                <div class="col-7"><b>{{ participation.club }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Nombre de places</label></div>
+                                <div class="col-7"><b>{{ participation.nombrePlace }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Montant</label></div>
+                                <div class="col-7"><b>{{ participation.montant }}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
