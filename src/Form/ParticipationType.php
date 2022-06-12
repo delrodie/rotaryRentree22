@@ -16,7 +16,7 @@ class ParticipationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-	        ->add('nom', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"],'label'=>'Nom de famille'])
+	        ->add('nom', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"],'label'=>'Nom'])
 	        ->add('prenoms', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"]])
 	        ->add('email', EmailType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"]])
 	        ->add('contact', TelType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"]])
