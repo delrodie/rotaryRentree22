@@ -44,6 +44,9 @@ class Participation
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $createdAt;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $poste;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,8 +173,20 @@ class Participation
     }
 
 	#[ORM\PrePersist]
-	public function setCreatedAtValue()
-	{
-		return $this->createdAt = new \DateTime();
-	}
+         	public function setCreatedAtValue()
+         	{
+         		return $this->createdAt = new \DateTime();
+         	}
+
+    public function getPoste(): ?string
+    {
+        return $this->poste;
+    }
+
+    public function setPoste(?string $poste): self
+    {
+        $this->poste = $poste;
+
+        return $this;
+    }
 }

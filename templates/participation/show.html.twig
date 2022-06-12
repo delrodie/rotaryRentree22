@@ -16,6 +16,7 @@
                         <div class="col-12"><label for="">Nom & Prenoms :</label>&nbsp; <b>{{ participation.nom }} {{ participation.prenoms }}</b></div>
                         <div class="col-12"><label for="">Email : </label> &nbsp; <b>{{ participation.email }}</b></div>
                         <div class="col-12"><label for="">Contact : </label> &nbsp; <b>{{ participation.contact }}</b></div>
+                        <div class="col-12"><label for="">Poste : </label> &nbsp; <b>{{ participation.poste }}</b></div>
                         <div class="col-12"><label for="">Club : </label> &nbsp; <b>{{ participation.club }}</b></div>
                         <div class="col-12"><label for="">Nombre de places : </label> &nbsp; <b>{{ participation.nombrePlace }}</b></div>
                         <div class="col-12"><label for="">Montant : </label> &nbsp; <b>{{ participation.montant|number_format(0,'','.') }} FCFA</b></div>
@@ -37,6 +38,10 @@
                             <div class="row mt-2">
                                 <div class="col-5"><label for="">Contact : </label></div>
                                 <div class="col-7"><b>{{ participation.contact }}</b></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-5"><label for="">Poste : </label></div>
+                                <div class="col-7"><b>{{ participation.poste }}</b></div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-5"><label for="">Club : </label></div>
