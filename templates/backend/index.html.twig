@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-md-4">
+			Nombre Tickets
+		</div>
+		<div class="col-md-4">
+			Nombre places
+		</div>
+		<div class="col-md-4">
+			Montant total
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				{% for participation in participations %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>{{ participation.nom|upper }} {{ participation.prenoms }}</td>
+						<td>{{ participation.email }}</td>
+						<td>{{ participation.contact }}</td>
+						<td>{{ participation.montant|number_format(0,'','.') }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock %}

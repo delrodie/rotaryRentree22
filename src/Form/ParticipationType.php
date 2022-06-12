@@ -22,7 +22,7 @@ class ParticipationType extends AbstractType
 	        ->add('contact', TelType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"]])
 	        ->add('club', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"]])
 	        ->add('nombrePlace', IntegerType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"], 'label'=>'Nombre de places'])
-	        ->add('poste', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"], 'label'=>'Poste'])
+	        ->add('poste', TextType::class,['attr'=>['class'=>'form-control','autocomplete'=>"off"], 'label'=>'Fonction'])
 	        //->add('montant')
             //->add('reference')
             //->add('slug')
