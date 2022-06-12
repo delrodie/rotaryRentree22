@@ -10,11 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/backend')]
 class BackendController extends AbstractController
 {
-    #[Route('/', name: 'app_backend')]
+	
+	#[Route('/', name: 'app_backend')]
     public function index(ParticipationRepository $participationRepository): Response
     {
         return $this->render('backend/index.html.twig', [
             'participations' => $participationRepository->findAll(),
+	        'nombrePlaces' => $participationRepository->getNombrePlaces(),
+	        'montantTotal' => $participationRepository->getMontantTotal()
         ]);
     }
 }

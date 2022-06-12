@@ -14,6 +14,16 @@ h1{
     font-weight: bold;
     color: #009A9A;
 }
+.libelle{
+    color: #DDDDDD;
+}
+table{
+    color: black;
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+}
 @media (max-width: 768px) {
     h1{
         font-size: 1.7rem;

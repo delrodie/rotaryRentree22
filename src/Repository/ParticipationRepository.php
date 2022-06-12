@@ -38,6 +38,30 @@ class ParticipationRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+	
+	/**
+	 * @throws \Doctrine\ORM\NonUniqueResultException
+	 * @throws \Doctrine\ORM\NoResultException
+	 */
+	public function getNombrePlaces()
+	{
+		return $this->createQueryBuilder('p')
+			->select('SUM(p.nombrePlace)')
+			->getQuery()->getSingleScalarResult()
+			;
+	}
+	
+	/**
+	 * @throws \Doctrine\ORM\NonUniqueResultException
+	 * @throws \Doctrine\ORM\NoResultException
+	 */
+	public function getMontantTotal()
+	{
+		return $this->createQueryBuilder('p')
+			->select('SUM(p.montant)')
+			->getQuery()->getSingleScalarResult()
+			;
+	}
 
 //    /**
 //     * @return Participation[] Returns an array of Participation objects

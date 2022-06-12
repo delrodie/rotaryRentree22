@@ -3,30 +3,88 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-	<div class="row">
-		<div class="col-md-4">
-			Nombre Tickets
+	<div class="row mb-5 mt-5">
+		<div class="col-md-4 text-center" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
+			<button class="btn btn-primary btn-lg">
+				<small class="libelle">Nombre Tickets</small> <br> <strong>{{ participations|length }}</strong>
+			</button>
 		</div>
-		<div class="col-md-4">
-			Nombre places
+		<div class="col-md-4 text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+			<button class="btn btn-success btn-lg">
+				<small class="libelle">Nombre places</small> <br> <strong>{{ nombrePlaces|number_format(0,'','.') }}</strong>
+			</button>
 		</div>
-		<div class="col-md-4">
-			Montant total
+		<div class="col-md-4 text-center" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500">
+			<button class="btn btn-danger btn-lg">
+				<small class="libelle">Montant total</small> <br> <strong>{{ montantTotal|number_format(0,'','.') }}</strong>
+			</button>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row mt-5">
 		<div class="col">
-			<table class="table">
+			<h1>Liste des participants</h1>
+		</div>
+	</div>
+	<div class="row mt-5">
+		<div class="col" data-aos="zoom-out" data-aos-easing="linear" data-aos-duration="3000">
+			<table id="participation" class="table table-striped" style="width: 100%">
+				<thead>
+					<tr class="text-center">
+						<th class="text-center text-uppercase">#</th>
+						<th class="text-center text-uppercase">Nom & prenoms</th>
+						<th class="text-center text-uppercase">Fonctions</th>
+						<th class="text-center text-uppercase">Email</th>
+						<th class="text-center text-uppercase">Contact</th>
+						<th class="text-center text-uppercase">Places</th>
+						<th class="text-center text-uppercase">Montant</th>
+					</tr>
+				</thead>
 				{% for participation in participations %}
 					<tr>
 						<td>{{ loop.index }}</td>
 						<td>{{ participation.nom|upper }} {{ participation.prenoms }}</td>
-						<td>{{ participation.email }}</td>
-						<td>{{ participation.contact }}</td>
-						<td>{{ participation.montant|number_format(0,'','.') }}</td>
+						<td class="text-center">{{ participation.poste }}</td>
+						<td><a href="mailto:{{ participation.email }}">{{ participation.email }}</a></td>
+						<td><a href="tel:{{ participation.contact }}">{{ participation.contact }}</a></td>
+						<td class="text-center">{{ participation.nombrePlace }}</td>
+						<td class="text-end">{{ participation.montant|number_format(0,'','.') }}</td>
 					</tr>
 				{% endfor %}
 			</table>
 		</div>
 	</div>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
+{% endblock %}
+{% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+        $(document).ready(function() {
+            var table = $('#participation').DataTable( {
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'colvis' ]
+            } );
+
+            table.buttons().container()
+                .appendTo( '#participation_wrapper .col-md-6:eq(0)' );
+        } );
+	</script>
+	<script>
+        AOS.init();
+	</script>
 {% endblock %}
