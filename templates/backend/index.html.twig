@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Liste des participants{% endblock %}
 
 {% block body %}
 	<div class="row mb-5 mt-5">
-		<div class="col-md-4 text-center" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
+		<div class="col-md-4 text-center pb-3" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500">
 			<button class="btn btn-primary btn-lg">
 				<small class="libelle">Nombre Tickets</small> <br> <strong>{{ participations|length }}</strong>
 			</button>
 		</div>
-		<div class="col-md-4 text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+		<div class="col-md-4 text-center pb-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
 			<button class="btn btn-success btn-lg">
 				<small class="libelle">Nombre places</small> <br> <strong>{{ nombrePlaces|number_format(0,'','.') }}</strong>
 			</button>
 		</div>
-		<div class="col-md-4 text-center" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500">
+		<div class="col-md-4 text-center pb-3" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500">
 			<button class="btn btn-danger btn-lg">
 				<small class="libelle">Montant total</small> <br> <strong>{{ montantTotal|number_format(0,'','.') }}</strong>
 			</button>
@@ -77,7 +77,8 @@
         $(document).ready(function() {
             var table = $('#participation').DataTable( {
                 lengthChange: false,
-                buttons: ['copy', 'excel', 'pdf', 'colvis' ]
+                buttons: ['copy', 'excel', 'pdf', 'colvis' ],
+				responsive: true
             } );
 
             table.buttons().container()
