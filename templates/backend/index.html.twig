@@ -32,6 +32,7 @@
 					<tr class="text-center">
 						<th class="text-center text-uppercase">#</th>
 						<th class="text-center text-uppercase">References</th>
+						<th class="text-center text-uppercase">Clubs</th>
 						<th class="text-center text-uppercase">Nom & prenoms</th>
 						<th class="text-center text-uppercase">Fonctions</th>
 						<th class="text-center text-uppercase">Email</th>
@@ -45,6 +46,7 @@
 					<tr>
 						<td>{{ loop.index }}</td>
 						<td class="text-center">{{ participation.reference}}</td>
+						<td class="text-center">{{ participation.club}}</td>
 						<td>{{ participation.nom|upper }} {{ participation.prenoms }}</td>
 						<td class="text-center">{{ participation.poste }}</td>
 						<td><a href="mailto:{{ participation.email }}">{{ participation.email }}</a></td>
