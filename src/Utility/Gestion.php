@@ -3,15 +3,21 @@
 	namespace App\Utility;
 	
 	use App\Entity\Participation;
+	use App\Repository\UserRepository;
 	use Doctrine\ORM\EntityManagerInterface;
+	use Symfony\Component\Security\Core\Security;
 	
 	class Gestion
 	{
 		private EntityManagerInterface $entityManager;
+		private Security $security;
+		private UserRepository $userRepository;
 		
-		public function __construct(EntityManagerInterface $entityManager)
+		public function __construct(EntityManagerInterface $entityManager, Security $security, UserRepository $userRepository)
 		{
 			$this->entityManager = $entityManager;
+			$this->security = $security;
+			$this->userRepository = $userRepository;
 		}
 		
 		public function participer($entity, $edit=null)
@@ -36,5 +42,17 @@
 			else $num = $id;
 			
 			return date('m').$num;
+		}
+		
+		public function connexion(): bool
+		{
+			$user = $this->userRepository->findOneBy(['email'=>$this->security->getUser()->getUserIdentifier()]);
+			$nombre_connexion = $user->getConnexion();
+			$user->setConnexion($nombre_connexion + 1);
+			$user->setLastConnectedAt(new \DateTime());
+			
+			$this->entityManager->flush();
+			
+			return true;
 		}
 	}
