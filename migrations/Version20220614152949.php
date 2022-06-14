@@ -20,7 +20,7 @@ final class Version20220614152949 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD connexion INT DEFAULT NULL, ADD last_connected_at DATETIME DEFAULT NULL, CHANGE roles roles JSON NOT NULL');
+        $this->addSql('ALTER TABLE user ADD connexion INT DEFAULT NULL, ADD last_connected_at DATETIME DEFAULT NULL, CHANGE roles roles LONGTEXT NOT NULL');
     }
 
     public function down(Schema $schema): void
