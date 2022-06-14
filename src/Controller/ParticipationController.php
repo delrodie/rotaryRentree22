@@ -60,16 +60,18 @@ class ParticipationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_participation_edit', methods: ['GET', 'POST'])]
+    #[Route('/{reference}/edit', name: 'app_participation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Participation $participation, ParticipationRepository $participationRepository): Response
     {
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $form = $this->createForm(ParticipationType::class, $participation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+	        $this->gestion->participer($participation, true);
             $participationRepository->add($participation, true);
 
-            return $this->redirectToRoute('app_participation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backend', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('participation/edit.html.twig', [

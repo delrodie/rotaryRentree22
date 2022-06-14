@@ -31,23 +31,31 @@
 				<thead>
 					<tr class="text-center">
 						<th class="text-center text-uppercase">#</th>
+						<th class="text-center text-uppercase">References</th>
 						<th class="text-center text-uppercase">Nom & prenoms</th>
 						<th class="text-center text-uppercase">Fonctions</th>
 						<th class="text-center text-uppercase">Email</th>
 						<th class="text-center text-uppercase">Contact</th>
 						<th class="text-center text-uppercase">Places</th>
 						<th class="text-center text-uppercase">Montant</th>
+						<th class="text-center text-uppercase">Actions</th>
 					</tr>
 				</thead>
 				{% for participation in participations %}
 					<tr>
 						<td>{{ loop.index }}</td>
+						<td class="text-center">{{ participation.reference}}</td>
 						<td>{{ participation.nom|upper }} {{ participation.prenoms }}</td>
 						<td class="text-center">{{ participation.poste }}</td>
 						<td><a href="mailto:{{ participation.email }}">{{ participation.email }}</a></td>
 						<td><a href="tel:{{ participation.contact }}">{{ participation.contact }}</a></td>
 						<td class="text-center">{{ participation.nombrePlace }}</td>
 						<td class="text-end">{{ participation.montant|number_format(0,'','.') }}</td>
+						<td class="text-center">
+							<a href="{{ path('app_participation_edit', {'reference': participation.reference}) }}">
+								<i class="fa fa-edit"></i>
+							</a>
+						</td>
 					</tr>
 				{% endfor %}
 			</table>
