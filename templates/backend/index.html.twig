@@ -52,7 +52,7 @@
 						<td><a href="mailto:{{ participation.email }}">{{ participation.email }}</a></td>
 						<td><a href="tel:{{ participation.contact }}">{{ participation.contact }}</a></td>
 						<td class="text-center">{{ participation.nombrePlace }}</td>
-						<td class="text-end">{{ participation.montant|number_format(0,'','.') }}</td>
+						<td class="text-end">{{ participation.montant|number_format(0,'',' ') }}</td>
 						<td class="text-center">
 							<a href="{{ path('app_participation_edit', {'reference': participation.reference}) }}">
 								<i class="fa fa-edit"></i>
